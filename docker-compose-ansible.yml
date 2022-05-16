@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  
+  ansible:
+    build: .
+    command: ansible-playbook -i ansible/hosts -e package_path=/packages/open-source-greenplum-db-6.20.3-rhel7-x86_64.rpm ansible/ansible-playbook.yml --key-file "ansible/ssh/id_rsa"
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False
+    volumes:
+      - ./ansible:/ansible
+      - ./packages:/packages

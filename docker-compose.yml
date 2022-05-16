@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  
+  master:
+    image: robertdebock/docker-centos-openssh
+    volumes:
+      - ./ansible/ssh:/root/.ssh/
+    ports:
+      - "2222:22"
+      - "54320:5432"
+  
+  seghost1:
+    image: robertdebock/docker-centos-openssh
+    volumes:
+      - ./ansible/ssh:/root/.ssh/
+    ports:
+      - "2223:22"
+  
+  seghost2:
+    image: robertdebock/docker-centos-openssh
+    volumes:
+      - ./ansible/ssh:/root/.ssh/
+    ports:
+      - "2224:22"
